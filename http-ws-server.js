@@ -12,6 +12,7 @@ function handshakeMsg(msg) {
   return 'HTTP/1.1 101 Switching Protocols\r\n' +
          'Upgrade: websocket\r\n' +
          'Connection: Upgrade\r\n' +
+         'sec-websocket-extensions: permessage-deflate; client_max_window_bits\r\n' +
          'Sec-WebSocket-Accept: ' + hashing + '\r\n' +
          '\r\n';
 }
@@ -73,7 +74,7 @@ function encode(msg) {
 }
 
 const server = http.createServer(function (req, res) {
-  console.log('123')
+  console.log(req.headers);
 });
 
 server.on("upgrade", function (req, socket, head) {

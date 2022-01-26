@@ -17,7 +17,8 @@ client.on('connect', function(connection) {
         if (connection.connected) {
             const data0 = {a: 10};
             console.log('send data', data0)
-            connection.send(JSON.stringify(data0))
+            // connection.send(JSON.stringify(data0))
+            connection.emit('test', 'test');
             setTimeout(sendNumber, 3000);
         }
     }
